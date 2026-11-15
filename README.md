@@ -4,6 +4,9 @@
 
 A detective game where anyone can investigate the sky with **real data from NASA's SPHEREx telescope**.
 
+▶ **Demo slides (PDF):** https://drive.google.com/file/d/1E-pT5G4epPqy7HgH5crTemunIvSNY3cM/view  
+▶ **Demo video (30 s):** https://drive.google.com/file/d/1g72G7lCAIU860xylC2nt5_pvAWaiHUpv/view
+
 ## Why we made it
 
 In 1930, Pluto was discovered by blinking two photos of the same patch of sky and spotting the one dot that jumped.
