@@ -31,6 +31,6 @@ py -3.13 -m pip install --no-warn-script-location numpy pygame astropy pyvo astr
 echo.
 echo ===== Revisando =====
 py -3.13 -c "import numpy, pygame, astropy, astroquery, reproject; print('TODO LISTO! Ahora hace doble clic en EMPEZAR.')"
-if errorlevel 1 echo Algo no se instalo. Saca una foto de esta ventana y mandasela a Claude.
+if errorlevel 1 echo Algo no se instalo. Saca una foto de esta ventana y mandasela a un adulto.
 echo.
 pause
