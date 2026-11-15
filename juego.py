@@ -164,9 +164,9 @@ def letra(tam, negrita=False, titulo=False):
         archivo = "PatrickHand-Regular.ttf"
     else:
         archivo = "TitilliumWeb-SemiBold.ttf" if negrita else "TitilliumWeb-Regular.ttf"
-    ruta = os.path.join(FUENTES, archivo)
-    if os.path.exists(ruta):
-        return pygame.font.Font(ruta, tam)
+    for ruta in (os.path.join(FUENTES, archivo), os.path.join(CARPETA, archivo)):   # en "fuentes" o suelta
+        if os.path.exists(ruta):
+            return pygame.font.Font(ruta, tam)
     return pygame.font.SysFont("trebuchetms,verdana,arial", tam, bold=negrita)   # por si falta la carpeta
 
 
@@ -294,8 +294,9 @@ class Investigacion(threading.Thread):
                 self.porcentaje = 100
                 self.resultado = {"fotos": [], "titulo": "NASA is not answering",
                                   "lineas": ["The IRSA archive is busy (error 502).",
-                                             "It's not the game's fault: try again in a few minutes."],
-                                  "resuelto": False}
+                                             "It's not the game's fault.",
+                                             "Press \"Try again\" in a minute."],
+                                  "resuelto": False, "reintentar": True}
                 return
             self.avisar("Comparing the photos…")
             self.resultado = analizar(s, fotos, math.hypot(pm_ra, pm_dec) / 1000, origen)
@@ -595,8 +596,10 @@ def dibujo_de_martina(clave, lado=196, alto=None):
     alto = alto or lado
     if (clave, lado, alto) not in DIBUJOS:
         DIBUJOS[(clave, lado, alto)] = None
-        for ext in (".png", ".jpg", ".jpeg", ".webp", ".svg"):
-            ruta = os.path.join(CARPETA, "dibujos", clave + ext)
+        rutas = [os.path.join(carpeta, clave + ext)
+                 for carpeta in (os.path.join(CARPETA, "dibujos"), CARPETA)    # en "dibujos" o suelto
+                 for ext in (".png", ".jpg", ".jpeg", ".webp", ".svg")]
+        for ruta in rutas:
             if os.path.exists(ruta):
                 try:
                     img = pygame.image.load(ruta).convert_alpha()
